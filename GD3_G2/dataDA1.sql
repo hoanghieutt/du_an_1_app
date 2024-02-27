@@ -1,0 +1,417 @@
+-- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
+--
+-- Host: localhost    Database: giay_effot
+-- ------------------------------------------------------
+-- Server version	8.2.0
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `chucvu`
+--
+
+DROP TABLE IF EXISTS `chucvu`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `chucvu` (
+  `MaChucVu` varchar(20) NOT NULL,
+  `Ten` varchar(50) NOT NULL,
+  PRIMARY KEY (`MaChucVu`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `chucvu`
+--
+
+LOCK TABLES `chucvu` WRITE;
+/*!40000 ALTER TABLE `chucvu` DISABLE KEYS */;
+INSERT INTO `chucvu` VALUES ('CV01','Nhân Viên'),('CV02','Quản Lý');
+/*!40000 ALTER TABLE `chucvu` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ctdonhang`
+--
+
+DROP TABLE IF EXISTS `ctdonhang`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `ctdonhang` (
+  `id` char(36) NOT NULL DEFAULT (uuid()),
+  `MaDonHang` varchar(20) DEFAULT NULL,
+  `IdThuocTinh` char(38) DEFAULT NULL,
+  `SL` int NOT NULL,
+  `DonGia` float NOT NULL,
+  `DonGiaSauGiam` float NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `Id_idx` (`IdThuocTinh`),
+  KEY `MaDonHang_idx` (`MaDonHang`),
+  KEY `MaDonHang_id` (`MaDonHang`),
+  CONSTRAINT `IDThuocTinh` FOREIGN KEY (`IdThuocTinh`) REFERENCES `thuoctinhsanpham` (`Id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `MaHD` FOREIGN KEY (`MaDonHang`) REFERENCES `donhang` (`MaDonHang`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ctdonhang`
+--
+
+LOCK TABLES `ctdonhang` WRITE;
+/*!40000 ALTER TABLE `ctdonhang` DISABLE KEYS */;
+INSERT INTO `ctdonhang` VALUES ('04c9c326-754d-11ed-b095-df068072b741','DH1',NULL,2,3600000,3600000),('087f5004-79ca-11ed-b3d8-8e86f33015d9',NULL,NULL,3,4500000,3150000),('0e0af640-79ca-11ed-b3d8-8e86f33015d9',NULL,NULL,10,15000000,10500000),('0e76d1d5-8c9c-11ee-9f1c-088fc30e0c13',NULL,NULL,1,1500000,150000),('0fc31b48-8c9c-11ee-9f1c-088fc30e0c13',NULL,NULL,1,1500000,150000),('102bca43-8c9c-11ee-9f1c-088fc30e0c13',NULL,NULL,1,1500000,150000),('13151370-7617-11ed-aef3-fbb69cebc51b',NULL,NULL,1,1800000,1800000),('161dbcf4-7705-11ed-801c-63a6147407c7',NULL,NULL,1,900000,900000),('16cad8b6-7904-11ed-b84d-435b02f6cd21',NULL,NULL,9,13500000,9450000),('16cdec6e-7705-11ed-801c-63a6147407c7',NULL,NULL,1,900000,900000),('18d7b95e-c40d-11ed-9a72-31f53736696c',NULL,NULL,4,6000000,5400000),('1af635f4-7556-11ed-b095-df068072b741',NULL,NULL,2,3600000,3600000),('1b733658-79ca-11ed-b3d8-8e86f33015d9',NULL,NULL,1,1200000,840000),('1b932fee-7556-11ed-b095-df068072b741',NULL,NULL,3,3600000,3600000),('1ec60d48-754d-11ed-b095-df068072b741',NULL,NULL,1,1500000,1500000),('1ec60f14-754d-11ed-b095-df068072b741',NULL,NULL,1,1500000,1500000),('1ec61090-754d-11ed-b095-df068072b741',NULL,NULL,3,4500000,4500000),('1ec611f8-754d-11ed-b095-df068072b741',NULL,NULL,2,3000000,3000000),('1ec61360-754d-11ed-b095-df068072b741',NULL,NULL,14,21000000,21000000),('1ec614b4-754d-11ed-b095-df068072b741',NULL,NULL,2,3600000,3600000),('1ec6161c-754d-11ed-b095-df068072b741',NULL,NULL,3,4500000,4500000),('1ec6177a-754d-11ed-b095-df068072b741',NULL,NULL,12,21600000,21600000),('1ec618d8-754d-11ed-b095-df068072b741',NULL,NULL,2,3000000,3000000),('1ec61a2c-754d-11ed-b095-df068072b741',NULL,NULL,3,5400000,5400000),('1ec61b80-754d-11ed-b095-df068072b741',NULL,NULL,5,9000000,9000000),('1ec61cd4-754d-11ed-b095-df068072b741',NULL,NULL,1,1500000,1500000),('1ec61e3c-754d-11ed-b095-df068072b741',NULL,NULL,2,2400000,2400000),('1ec61f90-754d-11ed-b095-df068072b741',NULL,NULL,100,150000000,150000000),('1ec620ee-754d-11ed-b095-df068072b741',NULL,NULL,22,33000000,33000000),('1ec62242-754d-11ed-b095-df068072b741',NULL,NULL,1,1800000,1800000),('1ec62396-754d-11ed-b095-df068072b741',NULL,NULL,11,16500000,16500000),('1ec624ea-754d-11ed-b095-df068072b741',NULL,NULL,3,5400000,5400000),('1ec6263e-754d-11ed-b095-df068072b741',NULL,NULL,3,2700000,2700000),('1ec62ce2-754d-11ed-b095-df068072b741',NULL,NULL,8,12000000,8400000),('1ec62e36-754d-11ed-b095-df068072b741',NULL,NULL,2,1800000,1800000),('1ec62f80-754d-11ed-b095-df068072b741',NULL,NULL,2,3000000,2100000),('1ec630ca-754d-11ed-b095-df068072b741',NULL,NULL,3,3780000,3780000),('1ec63228-754d-11ed-b095-df068072b741',NULL,NULL,1,900000,900000),('1ec6337c-754d-11ed-b095-df068072b741',NULL,NULL,1,900000,900000),('1ec634c6-754d-11ed-b095-df068072b741',NULL,NULL,2,3000000,2100000),('1ec63610-754d-11ed-b095-df068072b741',NULL,NULL,2,2100000,2100000),('1ec63764-754d-11ed-b095-df068072b741',NULL,NULL,1,1800000,1260000),('1ec638c2-754d-11ed-b095-df068072b741',NULL,NULL,2,1800000,1800000),('1ec63a0c-754d-11ed-b095-df068072b741',NULL,NULL,3,4500000,3150000),('1ec63b60-754d-11ed-b095-df068072b741',NULL,NULL,2,1800000,1800000),('1ec63caa-754d-11ed-b095-df068072b741',NULL,NULL,1,900000,900000),('1ec63dfe-754d-11ed-b095-df068072b741',NULL,NULL,2,3000000,3000000),('1ec63f5c-754d-11ed-b095-df068072b741',NULL,NULL,1,1800000,1800000),('1ec640b0-754d-11ed-b095-df068072b741',NULL,NULL,2,2400000,2400000),('1ec6420e-754d-11ed-b095-df068072b741',NULL,NULL,4,6000000,6000000),('1ec64362-754d-11ed-b095-df068072b741',NULL,NULL,2,2400000,2400000),('1ec644b6-754d-11ed-b095-df068072b741',NULL,NULL,1,1500000,1500000),('1ec6460a-754d-11ed-b095-df068072b741',NULL,NULL,1,1800000,1800000),('1ec6475e-754d-11ed-b095-df068072b741',NULL,NULL,2,1800000,1800000),('1ec648b2-754d-11ed-b095-df068072b741',NULL,NULL,1,900000,900000),('1ec649fc-754d-11ed-b095-df068072b741',NULL,NULL,1,1500000,1500000),('1ec64b50-754d-11ed-b095-df068072b741',NULL,NULL,1,1500000,1500000),('1ec64ca4-754d-11ed-b095-df068072b741',NULL,NULL,1,1200000,1200000),('1ec64e02-754d-11ed-b095-df068072b741',NULL,NULL,1,1500000,1500000),('1ec64f60-754d-11ed-b095-df068072b741',NULL,NULL,1,1500000,1500000),('1ec650be-754d-11ed-b095-df068072b741',NULL,NULL,1,1500000,1500000),('1ec65212-754d-11ed-b095-df068072b741',NULL,NULL,1,1200000,1200000),('1ec65366-754d-11ed-b095-df068072b741',NULL,NULL,3,4500000,4500000),('1ec654ba-754d-11ed-b095-df068072b741',NULL,NULL,32,48000000,48000000),('1ec6560e-754d-11ed-b095-df068072b741',NULL,NULL,6,9000000,9000000),('1ec65870-754d-11ed-b095-df068072b741',NULL,NULL,1,1500000,1500000),('22ce44c6-7842-11ed-9526-56869f87ca5c',NULL,NULL,6,9000000,6300000),('26dd4ad0-7842-11ed-9526-56869f87ca5c',NULL,NULL,1,1800000,1260000),('27b62148-7617-11ed-aef3-fbb69cebc51b',NULL,NULL,1,1500000,1500000),('286f4e66-76fd-11ed-897e-edd76fa5edb3',NULL,NULL,1,1500000,1500000),('28a4106b-8564-11ee-92ad-088fc30e0c13',NULL,NULL,4,6000000,5400000),('28b586a5-8779-11ee-8664-088fc30e0c13',NULL,NULL,2,3000000,2700000),('29087ca9-8779-11ee-8664-088fc30e0c13',NULL,NULL,2,3000000,2700000),('291b4ef7-8564-11ee-92ad-088fc30e0c13',NULL,NULL,3,4500000,4050000),('2a4e9b38-7842-11ed-9526-56869f87ca5c',NULL,NULL,2,200000,140000),('2ba801f0-8eb4-11ee-9f1c-088fc30e0c13',NULL,NULL,1,1500000,150000),('2c0f77da-8eb4-11ee-9f1c-088fc30e0c13',NULL,NULL,2,3000000,300000),('302dcf85-85e6-11ee-92ad-088fc30e0c13',NULL,NULL,2,3600000,3600000),('309ff08e-8eb4-11ee-9f1c-088fc30e0c13',NULL,NULL,1,32000,28800),('31800b35-8564-11ee-92ad-088fc30e0c13',NULL,NULL,3,4500000,4050000),('31c5e095-85e6-11ee-92ad-088fc30e0c13',NULL,NULL,2,3000000,2700000),('31d563f0-8564-11ee-92ad-088fc30e0c13',NULL,NULL,4,6000000,5400000),('32297791-8eb4-11ee-9f1c-088fc30e0c13',NULL,NULL,1,1800000,360000),('330bf810-777a-11ed-bf66-f0d96e9cc3fc',NULL,NULL,1,100000,70000),('33e22df4-777a-11ed-bf66-f0d96e9cc3fc',NULL,NULL,1,100000,70000),('350cfd56-7709-11ed-801c-63a6147407c7',NULL,NULL,2,3000000,2100000),('35f15c30-7709-11ed-801c-63a6147407c7',NULL,NULL,1,1200000,840000),('38db82db-940a-11ee-aa5d-088fc30e0c13','DH2',NULL,2,3600000,720000),('393ba59b-940a-11ee-aa5d-088fc30e0c13','DH2',NULL,2,3000000,300000),('3bb7922e-79ca-11ed-b3d8-8e86f33015d9',NULL,NULL,2,3000000,2100000),('3d1fa175-8c9c-11ee-9f1c-088fc30e0c13',NULL,NULL,3,4500000,-900000),('3d884d20-76fd-11ed-897e-edd76fa5edb3',NULL,NULL,1,1200000,1200000),('43a16374-c40d-11ed-9a72-31f53736696c',NULL,NULL,2,600000,540000),('4430d244-79ca-11ed-b3d8-8e86f33015d9',NULL,NULL,3,300000,210000),('448ce010-c40d-11ed-9a72-31f53736696c',NULL,NULL,2,3000000,2700000),('44f90770-8e4f-11ed-bc6b-d4a5bec8b11d',NULL,NULL,1,1500000,1500000),('45c57ab6-7848-11ed-9526-56869f87ca5c',NULL,NULL,1,80000,76000),('460c363e-9349-11ee-9f1c-088fc30e0c13',NULL,NULL,10,15000000,15000000),('46b634d8-7848-11ed-9526-56869f87ca5c',NULL,NULL,1,100000,95000),('47e16364-7848-11ed-9526-56869f87ca5c',NULL,NULL,1,900000,630000),('4a2f1dfa-7848-11ed-9526-56869f87ca5c',NULL,NULL,1,1500000,1050000),('4a6ff07c-79ca-11ed-b3d8-8e86f33015d9',NULL,NULL,2,200000,140000),('51c1fb7b-9407-11ee-aa5d-088fc30e0c13',NULL,NULL,48,72000000,7200000),('52506676-8c9e-11ee-9f1c-088fc30e0c13',NULL,NULL,2,3000000,600000),('5a6b083f-8c9b-11ee-9f1c-088fc30e0c13',NULL,NULL,2,3000000,300000),('5b0aad3e-7626-11ed-b5d8-1663af4754ce',NULL,NULL,4,6000000,6000000),('5bcfc0d8-8c9b-11ee-9f1c-088fc30e0c13',NULL,NULL,2,3000000,300000),('5d72ef6e-7626-11ed-b5d8-1663af4754ce',NULL,NULL,22,33000000,33000000),('5dcfe294-7a1a-11ed-b9a6-f3e18a13be80',NULL,NULL,24,36000000,32400000),('5f7518de-770a-11ed-801c-63a6147407c7',NULL,NULL,7,10500000,7350000),('5fd2182c-7903-11ed-b84d-435b02f6cd21',NULL,NULL,2,3000000,2100000),('60b43de5-8561-11ee-92ad-088fc30e0c13',NULL,NULL,2,3000000,2700000),('6144c3fd-8561-11ee-92ad-088fc30e0c13',NULL,NULL,1,1500000,1350000),('62eefa34-8561-11ee-92ad-088fc30e0c13',NULL,NULL,2,3600000,3600000),('6346f200-7770-11ed-8b8a-e3f213866979',NULL,NULL,1,1500000,1050000),('63cc46b2-7770-11ed-8b8a-e3f213866979',NULL,NULL,1,1500000,1050000),('6432994d-8561-11ee-92ad-088fc30e0c13',NULL,NULL,1,1200000,1200000),('65cde3c6-7770-11ed-8b8a-e3f213866979',NULL,NULL,1,1200000,840000),('66316680-7842-11ed-9526-56869f87ca5c',NULL,NULL,2,3000000,2100000),('669e7654-940a-11ee-aa5d-088fc30e0c13','DH3',NULL,1,1500000,900000),('67c33ec9-940a-11ee-aa5d-088fc30e0c13','DH3',NULL,2,3000000,1800000),('69bf3836-7770-11ed-8b8a-e3f213866979',NULL,NULL,3,2700000,1890000),('6af33478-7770-11ed-8b8a-e3f213866979',NULL,NULL,1,1500000,1050000),('6c10e7c4-7842-11ed-9526-56869f87ca5c',NULL,NULL,6,5400000,3780000),('70dc02a2-76fd-11ed-897e-edd76fa5edb3',NULL,NULL,4,6000000,6000000),('7324c23e-7634-11ed-b5d8-1663af4754ce',NULL,NULL,10,15000000,15000000),('7a87a858-c40d-11ed-9a72-31f53736696c',NULL,NULL,2,64000,57600),('7dbbe093-88f7-11ee-8664-088fc30e0c13',NULL,NULL,2,3000000,2700000),('7e6c31d7-88f7-11ee-8664-088fc30e0c13',NULL,NULL,1,1500000,1350000),('7f1c58c6-88f7-11ee-8664-088fc30e0c13',NULL,NULL,1,1500000,1350000),('81830de2-7704-11ed-801c-63a6147407c7',NULL,NULL,2,3600000,3600000),('84ea81d6-7704-11ed-801c-63a6147407c7',NULL,NULL,1,1500000,1500000),('850f2b94-79ca-11ed-b3d8-8e86f33015d9',NULL,NULL,4,6000000,4200000),('85f66827-8564-11ee-92ad-088fc30e0c13',NULL,NULL,1,1500000,1350000),('865aa957-8564-11ee-92ad-088fc30e0c13',NULL,NULL,1,1500000,1350000),('86a90bd2-79ca-11ed-b3d8-8e86f33015d9',NULL,NULL,1,1500000,1050000),('86e8f427-8c9d-11ee-9f1c-088fc30e0c13',NULL,NULL,1,1500000,-300000),('8746eeb0-79ca-11ed-b3d8-8e86f33015d9',NULL,NULL,1,1800000,1260000),('8852f7a6-8e4f-11ed-bc6b-d4a5bec8b11d',NULL,NULL,1,1500000,1350000),('899a2986-8e4f-11ed-bc6b-d4a5bec8b11d',NULL,NULL,2,64000,57600),('8a68b4b8-8e4f-11ed-bc6b-d4a5bec8b11d',NULL,NULL,1,300000,270000),('8eb430ac-7634-11ed-b5d8-1663af4754ce',NULL,NULL,7,10500000,10500000),('906a883a-7966-11ed-bf6b-7ac1566d2057',NULL,NULL,10,12000000,8400000),('9311bbe6-7554-11ed-b095-df068072b741',NULL,NULL,1,1200000,1200000),('93d927d6-7634-11ed-b5d8-1663af4754ce',NULL,NULL,6,9000000,9000000),('94b3b1ae-79cb-11ed-b3d8-8e86f33015d9',NULL,'30f0d53e-79cb-11ed-b3d8-8e86f33015d9',2,16000000,14400000),('9609e582-79cb-11ed-b3d8-8e86f33015d9',NULL,NULL,1,1500000,1350000),('9689ec46-79cb-11ed-b3d8-8e86f33015d9',NULL,NULL,1,1500000,1350000),('98595390-79cb-11ed-b3d8-8e86f33015d9',NULL,NULL,1,1500000,1500000),('a1f411ce-770a-11ed-801c-63a6147407c7',NULL,NULL,1,1500000,1050000),('a261c30e-770a-11ed-801c-63a6147407c7',NULL,NULL,1,1500000,1050000),('a2778c68-8c9c-11ee-9f1c-088fc30e0c13',NULL,NULL,1,1500000,-300000),('a2ff48d4-7554-11ed-b095-df068072b741',NULL,NULL,7,10500000,10500000),('a3ed9ac2-770a-11ed-801c-63a6147407c7',NULL,NULL,1,1500000,1050000),('a5f30924-7903-11ed-b84d-435b02f6cd21',NULL,NULL,6,9000000,6300000),('acec0314-7842-11ed-9526-56869f87ca5c',NULL,NULL,1,1500000,1050000),('aea772b0-7842-11ed-9526-56869f87ca5c',NULL,NULL,1,1200000,840000),('afed27c8-7842-11ed-9526-56869f87ca5c',NULL,NULL,2,1800000,1260000),('b11fa558-7842-11ed-9526-56869f87ca5c',NULL,NULL,1,1500000,1050000),('b1edacf0-7c66-11ed-8d70-e2314ae39234',NULL,NULL,1,300000,270000),('b2ee3976-7842-11ed-9526-56869f87ca5c',NULL,NULL,3,4500000,3150000),('b6fc3a3f-8eb4-11ee-9f1c-088fc30e0c13',NULL,NULL,1,1500000,150000),('b782b0e9-8eb4-11ee-9f1c-088fc30e0c13',NULL,NULL,1,1500000,150000),('b835d6ba-7c65-11ed-8d70-e2314ae39234',NULL,NULL,3,96000,96000),('b8768bee-8eb4-11ee-9f1c-088fc30e0c13',NULL,NULL,1,1200000,1200000),('b8bfb426-8eb4-11ee-9f1c-088fc30e0c13',NULL,NULL,1,1800000,360000),('ba72f4f8-7634-11ed-b5d8-1663af4754ce',NULL,NULL,1,1500000,1500000),('bbfac7e2-7c65-11ed-8d70-e2314ae39234',NULL,NULL,88,132000000,118800000),('bd48730c-7903-11ed-b84d-435b02f6cd21',NULL,NULL,1,1500000,1050000),('bdd9e454-7705-11ed-801c-63a6147407c7',NULL,NULL,1,1200000,1200000),('bf55bbec-754c-11ed-b095-df068072b741','DH1',NULL,1,1500000,1500000),('c098de26-79ca-11ed-b3d8-8e86f33015d9',NULL,NULL,2,600000,570000),('c1184df0-79ca-11ed-b3d8-8e86f33015d9',NULL,NULL,2,600000,570000),('c97b3ace-7705-11ed-801c-63a6147407c7',NULL,NULL,1,1200000,1200000),('d04ddd2e-7a0d-11ed-b9a6-f3e18a13be80',NULL,NULL,5,7500000,6750000),('d0557ba6-76fc-11ed-897e-edd76fa5edb3',NULL,NULL,2,3000000,3000000),('dab415bd-926e-11ee-9f1c-088fc30e0c13',NULL,NULL,3,240000,240000),('e625a625-940b-11ee-aa5d-088fc30e0c13','DH4','81000b47-940b-11ee-aa5d-088fc30e0c13',1,1000000,700000),('e6bf9d88-940b-11ee-aa5d-088fc30e0c13','DH4','8d3c8108-940b-11ee-aa5d-088fc30e0c13',1,1100000,770000),('e7740fee-940b-11ee-aa5d-088fc30e0c13','DH4','a1392245-940b-11ee-aa5d-088fc30e0c13',1,400000,280000),('edafe114-79cc-11ed-b3d8-8e86f33015d9',NULL,NULL,4,6000000,5400000),('ee42c88a-79cc-11ed-b3d8-8e86f33015d9',NULL,NULL,4,6000000,5400000),('ef50c752-7708-11ed-801c-63a6147407c7',NULL,NULL,1,1500000,1500000),('efaa93e0-7708-11ed-801c-63a6147407c7',NULL,NULL,1,1500000,1500000),('fea121d9-89c9-11ee-8664-088fc30e0c13',NULL,NULL,1,1200000,1200000),('ff147447-89c9-11ee-8664-088fc30e0c13',NULL,NULL,1,1800000,1800000),('ffc9fc4b-89c9-11ee-8664-088fc30e0c13',NULL,NULL,1,1500000,1350000);
+/*!40000 ALTER TABLE `ctdonhang` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `donhang`
+--
+
+DROP TABLE IF EXISTS `donhang`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `donhang` (
+  `MaDonHang` varchar(20) NOT NULL,
+  `MaNhanVien` varchar(20) DEFAULT NULL,
+  `SĐT` varchar(10) DEFAULT NULL,
+  `NgayTao` datetime NOT NULL,
+  `TrangThai` tinyint(1) NOT NULL,
+  PRIMARY KEY (`MaDonHang`),
+  KEY `MaNV_idx` (`MaNhanVien`),
+  KEY `SĐT_idx` (`SĐT`),
+  CONSTRAINT `MaNV` FOREIGN KEY (`MaNhanVien`) REFERENCES `nhanvien` (`MaNV`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `SĐT` FOREIGN KEY (`SĐT`) REFERENCES `khachhang` (`SĐT`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `donhang`
+--
+
+LOCK TABLES `donhang` WRITE;
+/*!40000 ALTER TABLE `donhang` DISABLE KEYS */;
+INSERT INTO `donhang` VALUES ('DH1','NV01','0938475839','2023-11-02 00:00:00',1),('DH2','NV05','094736473','2023-12-06 14:36:22',1),('DH3','NV05',NULL,'2023-12-06 14:38:05',0),('DH4','NV05','0987654321','2023-12-06 14:48:16',1);
+/*!40000 ALTER TABLE `donhang` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `khachhang`
+--
+
+DROP TABLE IF EXISTS `khachhang`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `khachhang` (
+  `SĐT` varchar(10) NOT NULL,
+  `HoTen` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `GioiTinh` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `NgaySInh` date NOT NULL,
+  `Email` varchar(50) DEFAULT NULL,
+  `DiaChi` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  PRIMARY KEY (`SĐT`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `khachhang`
+--
+
+LOCK TABLES `khachhang` WRITE;
+/*!40000 ALTER TABLE `khachhang` DISABLE KEYS */;
+INSERT INTO `khachhang` VALUES ('0000000000','Khách Lẻ','Nữ','2022-12-31','',''),('0938475839','Tịnh Văn Hiếu','Nam','2003-09-08','hieu@gmail.com','Thái Nguyên'),('0943847284','Đỗ Minh Vương','Nữ','2004-12-20','vuong@gmail.com','Thường Tín'),('094736473','Phạm Tuấn Anh','Nam','2003-03-09','anh@gmail.com','Hà Đông'),('0971373304','Nguyễn Bá Phước ','Nam','2003-12-28','baphuoc@gmail.com ','Hà Nội '),('0986574333','Khách ','Nữ','2019-12-01','khach@gmail.com',''),('0987654321','Nguyễn Thị Ly','Nữ','2003-11-02','ly@gmail.com',''),('0987654345','Tuấn Anh Phạm ','Nam','2022-12-13','anh@gmail.com','hà nội');
+/*!40000 ALTER TABLE `khachhang` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `khuyenmai`
+--
+
+DROP TABLE IF EXISTS `khuyenmai`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `khuyenmai` (
+  `MaKM` varchar(20) NOT NULL,
+  `Ten` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `GiamGia` int DEFAULT '0',
+  `NgayBatDau` date NOT NULL,
+  `NgayKetThuc` date NOT NULL,
+  PRIMARY KEY (`MaKM`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `khuyenmai`
+--
+
+LOCK TABLES `khuyenmai` WRITE;
+/*!40000 ALTER TABLE `khuyenmai` DISABLE KEYS */;
+INSERT INTO `khuyenmai` VALUES ('KM01','Ngày 11/11',50,'2022-11-11','2024-11-20'),('KM02','Ngày 20/11',30,'2022-11-20','2024-11-25'),('KM03','Ngày 8/10',30,'2022-10-08','2024-10-15'),('KM04','Ngày mới',30,'2022-10-08','2022-10-15'),('KM05','Ngày mới',30,'2022-10-08','2022-10-15'),('KM09','KM tháng 12',10,'2022-12-12','2024-01-11');
+/*!40000 ALTER TABLE `khuyenmai` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `kichthuoc`
+--
+
+DROP TABLE IF EXISTS `kichthuoc`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `kichthuoc` (
+  `MaSize` float NOT NULL,
+  `Us` float DEFAULT '0',
+  `ChieuDai` int DEFAULT '0',
+  PRIMARY KEY (`MaSize`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `kichthuoc`
+--
+
+LOCK TABLES `kichthuoc` WRITE;
+/*!40000 ALTER TABLE `kichthuoc` DISABLE KEYS */;
+INSERT INTO `kichthuoc` VALUES (35.5,5,22),(36,5.5,23),(36.5,6,23),(37.5,6.5,24),(38,7,24),(38.5,7.5,25),(39,8,25),(40,8.5,26),(40.5,9,26),(41,9.5,27),(42,10,27),(42.5,10.5,28),(43,11,28);
+/*!40000 ALTER TABLE `kichthuoc` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `km_sp`
+--
+
+DROP TABLE IF EXISTS `km_sp`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `km_sp` (
+  `MaSP` varchar(20) NOT NULL,
+  `MaKM` varchar(20) NOT NULL,
+  PRIMARY KEY (`MaSP`,`MaKM`),
+  KEY `MaKM_idx` (`MaKM`),
+  CONSTRAINT `FK_MaSP` FOREIGN KEY (`MaSP`) REFERENCES `sanpham` (`MaSP`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `MaKM` FOREIGN KEY (`MaKM`) REFERENCES `khuyenmai` (`MaKM`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `km_sp`
+--
+
+LOCK TABLES `km_sp` WRITE;
+/*!40000 ALTER TABLE `km_sp` DISABLE KEYS */;
+INSERT INTO `km_sp` VALUES ('SP1 ','KM02'),('SP2','KM02'),('SP3','KM02'),('SP4','KM02'),('SP5','KM02'),('SP6','KM02'),('SP9','KM09');
+/*!40000 ALTER TABLE `km_sp` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `mausac`
+--
+
+DROP TABLE IF EXISTS `mausac`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `mausac` (
+  `MaMau` varchar(20) NOT NULL,
+  `Ten` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  PRIMARY KEY (`MaMau`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mausac`
+--
+
+LOCK TABLES `mausac` WRITE;
+/*!40000 ALTER TABLE `mausac` DISABLE KEYS */;
+INSERT INTO `mausac` VALUES ('	#000000','Đen'),('	#FF0000','Đỏ'),('	#FFC0CB','Hồng'),('	#FFFFFF','Trắng'),('#080808','Xám'),('#a ','Màu '),('#aaaaa ','Màu Của Dép ');
+/*!40000 ALTER TABLE `mausac` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `nhanvien`
+--
+
+DROP TABLE IF EXISTS `nhanvien`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `nhanvien` (
+  `MaNV` varchar(20) NOT NULL,
+  `PassWord` varchar(20) NOT NULL,
+  `HoTen` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `GioiTinh` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `NgaySinh` date NOT NULL,
+  `SĐT` varchar(10) NOT NULL,
+  `DiaChi` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `MaChucVu` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`MaNV`),
+  KEY `MaChucVu_idx` (`MaChucVu`),
+  CONSTRAINT `MaChucVu` FOREIGN KEY (`MaChucVu`) REFERENCES `chucvu` (`MaChucVu`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `nhanvien`
+--
+
+LOCK TABLES `nhanvien` WRITE;
+/*!40000 ALTER TABLE `nhanvien` DISABLE KEYS */;
+INSERT INTO `nhanvien` VALUES ('NV01','4321','Phạm Quang Thịnh','Nữ','2003-02-04','0958475648','Hà Nội ','CV01'),('NV02','123','Nhân VIên không Quèn','Nam','2003-12-09','0911111111','','CV01'),('NV03','123','Trần Viết Thành An','Nam','2003-10-07','0963203014','Hà Nội','CV01'),('NV04','1234','Nguyễn Hoàng Nam','Nam','2003-10-07','0963203014','Hà Nội','CV02'),('NV05','123','Đỗ Minh Vương','Nam','2003-02-04','0339263495','Thường Tín','CV02'),('NV06','123','Ngô Thị Ly','Nữ','2003-11-02','sss','sss','CV01'),('NV08','123','Doãn Chí Bình','Nam','2003-11-10','0123456789','sss','CV01'),('NV09','123','Đỗ Văn Tuấn ','Nam','2003-11-03','0123456789','Hà Nội','CV01');
+/*!40000 ALTER TABLE `nhanvien` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `phanloai`
+--
+
+DROP TABLE IF EXISTS `phanloai`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `phanloai` (
+  `MaPhanLoai` varchar(20) NOT NULL,
+  `TenPhanLoai` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  PRIMARY KEY (`MaPhanLoai`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `phanloai`
+--
+
+LOCK TABLES `phanloai` WRITE;
+/*!40000 ALTER TABLE `phanloai` DISABLE KEYS */;
+INSERT INTO `phanloai` VALUES ('PL1','Giày nam'),('PL2','Giày nữ'),('PL3','Giày trẻ em'),('PL4','Giày thể thao'),('PL5','Giày cao cổ'),('PL6','Dép ');
+/*!40000 ALTER TABLE `phanloai` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pl_sp`
+--
+
+DROP TABLE IF EXISTS `pl_sp`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `pl_sp` (
+  `MaPhanLoai` varchar(20) NOT NULL,
+  `MaSP` varchar(20) NOT NULL,
+  PRIMARY KEY (`MaPhanLoai`,`MaSP`),
+  KEY `MaSP_idx` (`MaSP`),
+  CONSTRAINT `MaPhanLoai` FOREIGN KEY (`MaPhanLoai`) REFERENCES `phanloai` (`MaPhanLoai`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `MaSP` FOREIGN KEY (`MaSP`) REFERENCES `sanpham` (`MaSP`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pl_sp`
+--
+
+LOCK TABLES `pl_sp` WRITE;
+/*!40000 ALTER TABLE `pl_sp` DISABLE KEYS */;
+INSERT INTO `pl_sp` VALUES ('PL1','SP1 '),('PL2','SP1 '),('PL4','SP1 '),('PL6','SP1 '),('PL4','SP2'),('PL6','SP2'),('PL4','SP3'),('PL6','SP3'),('PL4','SP4'),('PL6','SP4'),('PL4','SP5'),('PL6','SP5'),('PL4','SP6'),('PL6','SP6'),('PL1','SP9'),('PL2','SP9'),('PL3','SP9'),('PL4','SP9');
+/*!40000 ALTER TABLE `pl_sp` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sanpham`
+--
+
+DROP TABLE IF EXISTS `sanpham`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `sanpham` (
+  `MaSP` varchar(20) NOT NULL,
+  `Ten` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `MaThuongHieu` varchar(20) DEFAULT NULL,
+  `MaMau` varchar(20) DEFAULT NULL,
+  `MoTa` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `GiaNhap` float DEFAULT '0',
+  `GiaBan` float DEFAULT '0',
+  `TrangThai` tinyint(1) NOT NULL DEFAULT '0',
+  `Hinh` varchar(300) DEFAULT NULL,
+  PRIMARY KEY (`MaSP`),
+  KEY `MathuongHieu_idx` (`MaThuongHieu`),
+  KEY `MaMau_idx` (`MaMau`),
+  CONSTRAINT `MaMau` FOREIGN KEY (`MaMau`) REFERENCES `mausac` (`MaMau`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `MathuongHieu` FOREIGN KEY (`MaThuongHieu`) REFERENCES `thuonghieu` (`MaThuongHieu`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sanpham`
+--
+
+LOCK TABLES `sanpham` WRITE;
+/*!40000 ALTER TABLE `sanpham` DISABLE KEYS */;
+INSERT INTO `sanpham` VALUES ('SP1 ','Giày Adidas  ','TH5','#080808','Dép Của Adidas ',600000,800000,1,NULL),('SP2','Giày Puma','TH3','#080808','Dép Của Adidas ',500000,700000,1,NULL),('SP3','Giày Nike','TH2','#080808','Dép Của Adidas ',700000,1000000,1,NULL),('SP4','Giày PoLy','TH6','	#000000','',700000,1100000,1,NULL),('SP5','Dép Bitis','TH1','	#000000','',200000,300000,1,NULL),('SP6','Dép NIke','TH2','	#FFFFFF','',200000,400000,1,NULL),('SP9','Giày poly','TH6',NULL,' ',530000,8000000,1,NULL);
+/*!40000 ALTER TABLE `sanpham` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `thuoctinhsanpham`
+--
+
+DROP TABLE IF EXISTS `thuoctinhsanpham`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `thuoctinhsanpham` (
+  `Id` char(38) NOT NULL DEFAULT (uuid()),
+  `MaSP` varchar(20) DEFAULT NULL,
+  `MaSize` float unsigned NOT NULL,
+  `SoLuong` int DEFAULT '0',
+  PRIMARY KEY (`Id`),
+  KEY `MaSP_idx` (`MaSP`),
+  KEY `MaSize_idx` (`MaSize`),
+  CONSTRAINT `MaSP_ThuocTinh` FOREIGN KEY (`MaSP`) REFERENCES `sanpham` (`MaSP`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `thuoctinhsanpham`
+--
+
+LOCK TABLES `thuoctinhsanpham` WRITE;
+/*!40000 ALTER TABLE `thuoctinhsanpham` DISABLE KEYS */;
+INSERT INTO `thuoctinhsanpham` VALUES ('30f0d53e-79cb-11ed-b3d8-8e86f33015d9','SP9',39,86),('595a8dfe-940b-11ee-aa5d-088fc30e0c13','SP1 ',40,500),('6be4d060-940b-11ee-aa5d-088fc30e0c13','SP2',41,500),('81000b47-940b-11ee-aa5d-088fc30e0c13','SP3',41,499),('8d3c8108-940b-11ee-aa5d-088fc30e0c13','SP4',39,199),('9b4c5cf1-940b-11ee-aa5d-088fc30e0c13','SP5',39,200),('a1392245-940b-11ee-aa5d-088fc30e0c13','SP6',40,599);
+/*!40000 ALTER TABLE `thuoctinhsanpham` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `thuonghieu`
+--
+
+DROP TABLE IF EXISTS `thuonghieu`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `thuonghieu` (
+  `MaThuongHieu` varchar(20) NOT NULL,
+  `Ten` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  PRIMARY KEY (`MaThuongHieu`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `thuonghieu`
+--
+
+LOCK TABLES `thuonghieu` WRITE;
+/*!40000 ALTER TABLE `thuonghieu` DISABLE KEYS */;
+INSERT INTO `thuonghieu` VALUES ('TH1','Bitis'),('TH2','Nike'),('TH3','Puma'),('TH4','Adidas'),('TH5','Dép'),('TH6','Poly'),('TH7','ád');
+/*!40000 ALTER TABLE `thuonghieu` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2023-12-06 17:19:10
